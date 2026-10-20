@@ -1,0 +1,15 @@
+# This branch is the public face of Upswell: only the public site and docs.
+# Everything is ignored unless allowed below, so private code can't slip in.
+*
+!.gitignore
+!.nojekyll
+!README.md
+!PRIVACY.md
+!index.html
+!privacy/
+!privacy/index.html
+!assets/
+!assets/*
+!docs/
+!docs/images/
+!docs/images/*.png

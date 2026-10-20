@@ -1,0 +1,570 @@
+/* Upswell public site: the same tokens as the app (paper, ink, one data blue). */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-sunk: #f3f2ee;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --border: rgba(11, 11, 11, 0.1);
+  --series-1: #2a78d6;
+  --series-1-wash: rgba(42, 120, 214, 0.1);
+  --series-2: #eb6834;
+  --stage-1: #86b6ef;
+  --stage-2: #3987e5;
+  --stage-3: #1c5cab;
+  --stage-4: #0d366b;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --gutter: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-sunk: #141413;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --border: rgba(255, 255, 255, 0.1);
+    --series-1: #3987e5;
+    --series-1-wash: rgba(57, 135, 229, 0.14);
+    --series-2: #d95926;
+    --stage-2: #5598e7;
+    --stage-3: #256abf;
+    --stage-4: #184f95;
+  }
+}
+
+@media (min-width: 720px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 400 1rem/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--series-1);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Header */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 680;
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.brand small {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.top nav {
+  display: flex;
+  gap: 18px;
+  font-size: 0.875rem;
+  font-weight: 550;
+}
+
+.top nav a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .top nav a:hover {
+    color: var(--ink);
+  }
+}
+
+/* Type: tracking tightens as size grows. */
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.headline {
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.sub {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  color: var(--ink-2);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--series-1-wash);
+  color: var(--ink);
+}
+
+.status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--series-1);
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  padding: 40px 0 64px;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 48px;
+    padding: 64px 0 88px;
+  }
+}
+
+.hero-text {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+/* Swell lifecycle picture: draws once (explanation), then stages arrive in order. */
+.swell {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.swell .water {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.swell .wave {
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 720;
+  animation: draw 1400ms var(--ease-in-out) 150ms forwards;
+}
+
+.swell .wash {
+  opacity: 0;
+  animation: appear 600ms ease 900ms forwards;
+}
+
+.swell .marker {
+  animation: settle 260ms var(--ease-out) backwards;
+}
+
+.swell .marker:nth-of-type(1) {
+  animation-delay: 500ms;
+}
+.swell .marker:nth-of-type(2) {
+  animation-delay: 760ms;
+}
+.swell .marker:nth-of-type(3) {
+  animation-delay: 1020ms;
+}
+.swell .marker:nth-of-type(4) {
+  animation-delay: 1280ms;
+}
+
+.swell .label {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink-2);
+}
+
+.swell .callout {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: callout 320ms var(--ease-out) 1650ms backwards;
+}
+
+.swell .callout rect,
+.swell .callout path {
+  fill: var(--ink);
+}
+
+.swell .callout text {
+  font-size: 12.5px;
+  font-weight: 600;
+  fill: var(--page);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes callout {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(4px);
+  }
+}
+
+@media (max-width: 600px) {
+  .swell .label {
+    font-size: 18px;
+  }
+  .swell .callout text {
+    font-size: 15.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swell .wave {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .swell .wash {
+    opacity: 1;
+    animation: none;
+  }
+  .swell .marker,
+  .swell .callout {
+    animation: appear-in 200ms ease backwards;
+  }
+}
+
+@keyframes appear-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Sections */
+section.block {
+  padding: 48px 0;
+  border-top: 1px solid var(--grid);
+}
+
+.block > h2 {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  max-width: 26ch;
+  margin-bottom: 28px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .grid.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tile {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface-sunk);
+}
+
+.tile.us {
+  background: var(--surface);
+  box-shadow: 0 0 0 1.5px var(--series-1), 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--border), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.tile p,
+.card p {
+  margin: 0;
+}
+
+.who {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.us .who {
+  color: var(--series-1);
+}
+
+.big {
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.012em;
+}
+
+.dim {
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.step-n {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--series-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.steps h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+
+.steps li {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.advice {
+  font-size: 1.375rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+/* Platforms: Etsy blue, Pinterest orange, never merged. */
+.platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.platform i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--dot);
+}
+
+.platform.etsy {
+  --dot: var(--series-1);
+}
+
+.platform.pinterest {
+  --dot: var(--series-2);
+}
+
+.list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--ink-2);
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
+.closing {
+  margin: 0;
+  padding: 56px 0;
+  border-top: 1px solid var(--grid);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+footer {
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--grid);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+footer p {
+  margin: 0 0 6px;
+}
+
+footer a {
+  color: var(--ink-2);
+}
+
+/* Long-form pages (privacy) */
+.prose {
+  max-width: 68ch;
+  padding: 24px 0 56px;
+}
+
+.prose h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.prose h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  margin: 32px 0 8px;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-2);
+}
+
+/* Stage dots: the same blue ramp as the wave. */
+.stage i {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--dot);
+}
+
+.stage.ripple { --dot: var(--stage-1); }
+.stage.swell { --dot: var(--stage-2); }
+.stage.crest { --dot: var(--stage-3); }
+.stage.breaking { --dot: var(--stage-4); }
+
+/* Screenshots of the research dashboard. */
+.shot {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border), 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.shot figcaption {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.note {
+  margin: 20px 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+/* Phones: keep the header on one line. */
+@media (max-width: 560px) {
+  .brand small,
+  .top nav a.wide {
+    display: none;
+  }
+}
+
+.top nav a {
+  white-space: nowrap;
+}

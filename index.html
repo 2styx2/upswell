@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upswell · Catch the swell before the crowd</title>
+  <meta name="description" content="Upswell is a research project that shows Etsy sellers which product themes are rising while they're still early, from public Etsy statistics and Pinterest search trends.">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="./" aria-label="Upswell home">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M2 15.5c2.6 0 3.4-2.2 5.2-2.2s2.6 2.2 5 2.2c3.3 0 4.6-4 4.6-7.3 0-2.6-1.6-4.2-3.6-4.2-1.5 0-2.6 1-2.6 2.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 19h18" stroke="var(--series-1)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Upswell <small>for Etsy sellers</small>
+      </a>
+      <nav aria-label="Main">
+        <a class="wide" href="#how">How it works</a>
+        <a href="#pinterest">Pinterest</a>
+        <a href="privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <p class="status"><i></i>Research preview, not open to the public yet</p>
+          <h1 class="headline">Catch the swell before the crowd.</h1>
+          <p class="sub">
+            Upswell reads public Etsy demand and Pinterest search trends every day and shows sellers which product
+            themes are rising while they're still Ripples, so they can make something original for demand that's only
+            just arriving.
+          </p>
+        </div>
+        <figure aria-label="A theme's life as a wave: Ripple, Swell, Crest, Breaking. Upswell spots it at the Ripple." style="margin:0">
+          <svg viewBox="0 0 560 260" class="swell" aria-hidden="true">
+            <defs>
+              <linearGradient id="swell-gradient" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="var(--stage-1)"/>
+                <stop offset="45%" stop-color="var(--stage-2)"/>
+                <stop offset="75%" stop-color="var(--stage-3)"/>
+                <stop offset="100%" stop-color="var(--stage-4)"/>
+              </linearGradient>
+              <linearGradient id="swell-wash" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="var(--series-1)" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="var(--series-1)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" x2="560" y1="222" y2="222" class="water"/>
+            <path class="wash" fill="url(#swell-wash)" d="M10 214 C50 214 70 206 100 206 C130 206 140 213 170 210 C230 202 260 168 300 138 C340 108 360 64 400 58 C432 54 452 72 446 92 C470 150 500 190 550 212 L550 222 L10 222 Z"/>
+            <path class="wave" stroke="url(#swell-gradient)" d="M10 214 C50 214 70 206 100 206 C130 206 140 213 170 210 C230 202 260 168 300 138 C340 108 360 64 400 58 C432 54 452 72 446 92 C441 108 424 106 422 94 M446 92 C470 150 500 190 550 212"/>
+            <g class="marker"><circle cx="132" cy="207" r="6.5" fill="var(--stage-1)" stroke="var(--page)" stroke-width="3"/><text x="132" y="236" text-anchor="middle" class="label">Ripple</text></g>
+            <g class="marker"><circle cx="292" cy="142" r="6.5" fill="var(--stage-2)" stroke="var(--page)" stroke-width="3"/><text x="292" y="172" text-anchor="middle" class="label">Swell</text></g>
+            <g class="marker"><circle cx="398" cy="59" r="6.5" fill="var(--stage-3)" stroke="var(--page)" stroke-width="3"/><text x="398" y="32" text-anchor="middle" class="label">Crest</text></g>
+            <g class="marker"><circle cx="488" cy="173" r="6.5" fill="var(--stage-4)" stroke="var(--page)" stroke-width="3"/><text x="474" y="178" text-anchor="end" class="label">Breaking</text></g>
+            <g class="callout">
+              <path d="M132 192 L127 184 L137 184 Z"/>
+              <rect x="50" y="150" width="164" height="34" rx="17"/>
+              <text x="132" y="171.5" text-anchor="middle">Upswell spots it here</text>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
+      <section class="block">
+        <h2>Everyone else shows you what already happened.</h2>
+        <div class="grid four">
+          <div class="tile"><p class="who">Etsy</p><p class="big">What exists</p><p class="dim">A grid of listings for whatever you search.</p></div>
+          <div class="tile"><p class="who">Pinterest</p><p class="big">What inspires</p><p class="dim">A feed of ideas to save, with no sense of timing.</p></div>
+          <div class="tile"><p class="who">Keyword tools</p><p class="big">What you ask about</p><p class="dim">Search volumes for words you already thought of.</p></div>
+          <div class="tile us"><p class="who">Upswell</p><p class="big">What's rising, and how early you are</p><p class="dim">Etsy demand and Pinterest searches lined up in time, with a Stage for every Theme.</p></div>
+        </div>
+      </section>
+
+      <section class="block" id="how">
+        <h2>How it works</h2>
+        <ol class="steps grid three" style="gap:28px">
+          <li><span class="step-n">01</span><h3>Read</h3><p class="dim">Once a day, Upswell reads public Etsy statistics (favorites, views, shops' public sales counts) and trending search keywords from Pinterest, through their official APIs.</p></li>
+          <li><span class="step-n">02</span><h3>Spot</h3><p class="dim">Listings group into Themes by the tags they share. Each Theme gets a momentum, a crowding level and a Stage.</p></li>
+          <li><span class="step-n">03</span><h3>Act</h3><p class="dim">Sellers open a daily report: new Ripples, Gaps nobody has filled yet, and the evidence behind each one.</p></li>
+        </ol>
+      </section>
+
+      <section class="block">
+        <h2>Every Theme has a Stage. Each one says what to do.</h2>
+        <ul class="steps grid four">
+          <li class="card"><span class="stage ripple"><i></i>Ripple</span><p class="advice">Make now</p><p class="dim">Tiny but accelerating. The best time to start.</p></li>
+          <li class="card"><span class="stage swell"><i></i>Swell</span><p class="advice">Still room</p><p class="dim">Rising fast and not crowded yet.</p></li>
+          <li class="card"><span class="stage crest"><i></i>Crest</span><p class="advice">Be quick</p><p class="dim">Near its peak; competition is arriving.</p></li>
+          <li class="card"><span class="stage breaking"><i></i>Breaking</span><p class="advice">Move on</p><p class="dim">Crowded or fading. Make the next thing.</p></li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Two platforms, kept apart.</h2>
+        <div class="grid two">
+          <div class="card">
+            <span class="platform etsy"><i></i>Etsy</span>
+            <p class="big" style="margin-top:8px">What buyers are favoriting and buying</p>
+            <p class="dim">Momentum, crowding and breakout listings, from public listing and shop statistics.</p>
+          </div>
+          <div class="card">
+            <span class="platform pinterest"><i></i>Pinterest</span>
+            <p class="big" style="margin-top:8px">What people are searching for</p>
+            <p class="dim">Keywords whose searches are growing, shown as their own signal and never blended into Etsy numbers.</p>
+          </div>
+        </div>
+        <p class="note">When both signals rise together, a Theme is labelled "Rising on both platforms". Otherwise each platform speaks for itself.</p>
+      </section>
+
+      <section class="block">
+        <h2>The research dashboard</h2>
+        <div class="grid two" style="gap:24px">
+          <figure class="shot"><img src="docs/images/today.png" alt="Today's swell report: newly rising Etsy themes and Pinterest searches not yet on Etsy" width="1281" height="900"><figcaption>Today's report: new Ripples on Etsy, and Pinterest searches Etsy doesn't serve yet.</figcaption></figure>
+          <figure class="shot"><img src="docs/images/niche-dark.png" alt="A niche page ranking themes by momentum, with stage and crowding" width="1281" height="860"><figcaption>A niche, ranked by momentum with Stage and crowding (dark mode).</figcaption></figure>
+        </div>
+        <p class="note">Screenshots show the dashboard running on simulated data. No numbers on this page are real results.</p>
+      </section>
+
+      <section class="block" id="pinterest">
+        <h2>How Upswell uses Pinterest</h2>
+        <div class="grid two">
+          <div class="card">
+            <p class="big">What it reads</p>
+            <ul class="list">
+              <li>Trending search keywords and their growth rates, from the Pinterest Trends API.</li>
+              <li>Read-only, once a day, within Pinterest's rate limits.</li>
+              <li>Shown to sellers as their own "On Pinterest" signal, credited to Pinterest.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="big">What it never does</p>
+            <ul class="list">
+              <li>No Pinterest user data, boards, Pins or account information.</li>
+              <li>No posting, saving or writing to Pinterest.</li>
+              <li>No scraping, no reselling of Pinterest data.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Who's behind it</h2>
+        <p class="dim" style="max-width:62ch;margin:0">
+          Upswell is built by an independent Etsy seller. It's a research preview: a private dashboard is being tested
+          before any public launch. A paid plan (about $10 a month) is planned once the signals prove themselves.
+          Questions? <a href="https://github.com/2styx2/upswell/issues">Open an issue on GitHub</a>.
+        </p>
+      </section>
+
+      <p class="closing">Make the next thing, not the last one.</p>
+    </main>
+
+    <footer>
+      <p><a href="privacy/">Privacy policy</a> · <a href="https://github.com/2styx2/upswell">GitHub</a></p>
+      <p>The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+      <p>Pinterest is a trademark of Pinterest, Inc. Upswell is not affiliated with or endorsed by Pinterest.</p>
+    </footer>
+  </div>
+</body>
+</html>
